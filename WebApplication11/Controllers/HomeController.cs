@@ -10,7 +10,7 @@ namespace WebApplication11.Controllers
 {
     public class HomeController : Controller
     {
-        int a;
+        int b;
         public IActionResult Index()
         {
             return View();
