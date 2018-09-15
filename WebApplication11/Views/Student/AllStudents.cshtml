@@ -1,0 +1,121 @@
+﻿@{
+    ViewData["Title"] = "AllStudents";
+}
+@model IEnumerable<Student>
+<h2>AllStudents</h2>
+
+<form action="/Student/AllStudents" method="post">
+    <label for="Search By Name"> Search By Name</label>
+    <input type="text" id="SearchByName" name="SearchByName" class="form-control" />
+
+    <label for="Search By Class"> Search By Class</label>
+    <input type="text" id="SearchByClass" name="SearchByClass" class="form-control" />
+
+    <label for="Search By RollNo"> Search By Roll_No</label>
+    <input type="text" id="SearchByRollNo" name="SearchByRollNo" class="form-control" />
+
+    <label for="Search By PhoneNo"> Search By PhoneNo</label>
+    <input type="text" id="SearchByPhoneNo" name="SearchByPhoneNo" class="form-control" />
+
+    <label for="Search By FatherName"> Search By FatherName</label>
+    <input type="text" id="SearchByFatherName" name="SearchByFatherName" class="form-control" />
+
+    <label for="Search By Address"> Search By Address</label>
+    <input type="text" id="SearchByAddress" name="SearchByAddress" class="form-control" />
+
+    <label for="Search By Email"> Search By Email</label>
+    <input type="text" id="SearchByEmail" name="SearchByEmail" class="form-control" />
+
+    <label for="Search By Subject"> Search By Class</label>
+    <input type="text" id="SearchBySubject" name="SearchBySubject" class="form-control" />
+
+
+    <button type="submit" class="btn btn-success">Search</button>
+
+    <a href="/Student/AddStudent?" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-apple"></span> Add New Student</a>
+
+
+</form>
+
+<table id="ourtable" name="ourtable" class="table table-bordered">
+
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Class</td>
+            <td>Roll_No</td>
+            <td>Phone_No</td>
+            <td>Father_Name</td>
+            <td>Address </td>
+            <td>Email</td>
+            <td>Subject</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (Student S in Model)
+        {
+            <tr>
+                <td>
+                    @S.Id
+                </td>
+                <td>
+                    @S.Name
+                </td>
+                <td>
+                    @S.Class
+                </td>
+                <td>
+                    @S.RollNo
+                </td>
+                <td>
+                    @S.PhoneNo
+                </td>
+                <td>
+                    @S.FatherName
+                </td>
+                <td>
+                    @S.Address
+                </td>
+                <td>
+                    @S.Email
+                </td>
+                <td>
+                    @S.Subject
+                </td>
+                <td>
+                    <a href="/Student/StudentDetail?Id=@S.Id" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Detail</a>
+                    <a href="/Student/DeleteStudent?Id=@S.Id" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                    
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<img id="ik" src="https://pbs.twimg.com/profile_images/1034759395622756352/G3QDI4pv_400x400.jpg" />
+
+
+
+@section abc
+    {
+    <script>
+
+        $(function () {
+
+            $('#ourtable').DataTable();
+            $('#ik').draggable();
+            $('#nb').draggable();
+            $('#dob').datepicker();
+        });
+
+    </script>
+
+
+}
+
+
